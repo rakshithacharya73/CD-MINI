@@ -1,0 +1,474 @@
+Terminals unused in grammar
+
+    RETURN
+
+
+Grammar
+
+    0 $accept: program $end
+
+    1 program: INT MAIN NL BEG NL decl NL assign NL loop NL END
+
+    2 decl: INT ID '[' NUMBER ']' SC
+
+    3 assign: INT ID EQ ID '[' NUMBER ']' SC
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    '-' (45) 4
+    '[' (91) 2 3 4
+    ']' (93) 2 3 4
+    error (256)
+    INT (258) 1 2 3
+    MAIN (259) 1
+    BEG (260) 1
+    END (261) 1
+    FOR (262) 4
+    IF (263) 4
+    ENDIF (264) 4
+    ENDFOR (265) 4
+    DO (266) 4
+    TO (267) 4
+    RETURN (268)
+    RELOP (269) 4
+    EQ (270) 3 4
+    SC (271) 2 3 4
+    NUMBER (272) 2 3 4
+    ID (273) 2 3 4
+    NL (274) 1 4
+
+
+Nonterminals, with rules where they appear
+
+    $accept (23)
+        on left: 0
+    program (24)
+        on left: 1
+        on right: 0
+    decl (25)
+        on left: 2
+        on right: 1
+    assign (26)
+        on left: 3
+        on right: 1
+    loop (27)
+        on left: 4
+        on right: 1
+
+
+State 0
+
+    0 $accept: • program $end
+
+    INT  shift, and go to state 1
+
+    program  go to state 2
+
+
+State 1
+
+    1 program: INT • MAIN NL BEG NL decl NL assign NL loop NL END
+
+    MAIN  shift, and go to state 3
+
+
+State 2
+
+    0 $accept: program • $end
+
+    $end  shift, and go to state 4
+
+
+State 3
+
+    1 program: INT MAIN • NL BEG NL decl NL assign NL loop NL END
+
+    NL  shift, and go to state 5
+
+
+State 4
+
+    0 $accept: program $end •
+
+    $default  accept
+
+
+State 5
+
+    1 program: INT MAIN NL • BEG NL decl NL assign NL loop NL END
+
+    BEG  shift, and go to state 6
+
+
+State 6
+
+    1 program: INT MAIN NL BEG • NL decl NL assign NL loop NL END
+
+    NL  shift, and go to state 7
+
+
+State 7
+
+    1 program: INT MAIN NL BEG NL • decl NL assign NL loop NL END
+
+    INT  shift, and go to state 8
+
+    decl  go to state 9
+
+
+State 8
+
+    2 decl: INT • ID '[' NUMBER ']' SC
+
+    ID  shift, and go to state 10
+
+
+State 9
+
+    1 program: INT MAIN NL BEG NL decl • NL assign NL loop NL END
+
+    NL  shift, and go to state 11
+
+
+State 10
+
+    2 decl: INT ID • '[' NUMBER ']' SC
+
+    '['  shift, and go to state 12
+
+
+State 11
+
+    1 program: INT MAIN NL BEG NL decl NL • assign NL loop NL END
+
+    INT  shift, and go to state 13
+
+    assign  go to state 14
+
+
+State 12
+
+    2 decl: INT ID '[' • NUMBER ']' SC
+
+    NUMBER  shift, and go to state 15
+
+
+State 13
+
+    3 assign: INT • ID EQ ID '[' NUMBER ']' SC
+
+    ID  shift, and go to state 16
+
+
+State 14
+
+    1 program: INT MAIN NL BEG NL decl NL assign • NL loop NL END
+
+    NL  shift, and go to state 17
+
+
+State 15
+
+    2 decl: INT ID '[' NUMBER • ']' SC
+
+    ']'  shift, and go to state 18
+
+
+State 16
+
+    3 assign: INT ID • EQ ID '[' NUMBER ']' SC
+
+    EQ  shift, and go to state 19
+
+
+State 17
+
+    1 program: INT MAIN NL BEG NL decl NL assign NL • loop NL END
+
+    FOR  shift, and go to state 20
+
+    loop  go to state 21
+
+
+State 18
+
+    2 decl: INT ID '[' NUMBER ']' • SC
+
+    SC  shift, and go to state 22
+
+
+State 19
+
+    3 assign: INT ID EQ • ID '[' NUMBER ']' SC
+
+    ID  shift, and go to state 23
+
+
+State 20
+
+    4 loop: FOR • ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    ID  shift, and go to state 24
+
+
+State 21
+
+    1 program: INT MAIN NL BEG NL decl NL assign NL loop • NL END
+
+    NL  shift, and go to state 25
+
+
+State 22
+
+    2 decl: INT ID '[' NUMBER ']' SC •
+
+    $default  reduce using rule 2 (decl)
+
+
+State 23
+
+    3 assign: INT ID EQ ID • '[' NUMBER ']' SC
+
+    '['  shift, and go to state 26
+
+
+State 24
+
+    4 loop: FOR ID • EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    EQ  shift, and go to state 27
+
+
+State 25
+
+    1 program: INT MAIN NL BEG NL decl NL assign NL loop NL • END
+
+    END  shift, and go to state 28
+
+
+State 26
+
+    3 assign: INT ID EQ ID '[' • NUMBER ']' SC
+
+    NUMBER  shift, and go to state 29
+
+
+State 27
+
+    4 loop: FOR ID EQ • NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    NUMBER  shift, and go to state 30
+
+
+State 28
+
+    1 program: INT MAIN NL BEG NL decl NL assign NL loop NL END •
+
+    $default  reduce using rule 1 (program)
+
+
+State 29
+
+    3 assign: INT ID EQ ID '[' NUMBER • ']' SC
+
+    ']'  shift, and go to state 31
+
+
+State 30
+
+    4 loop: FOR ID EQ NUMBER • TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    TO  shift, and go to state 32
+
+
+State 31
+
+    3 assign: INT ID EQ ID '[' NUMBER ']' • SC
+
+    SC  shift, and go to state 33
+
+
+State 32
+
+    4 loop: FOR ID EQ NUMBER TO • ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    ID  shift, and go to state 34
+
+
+State 33
+
+    3 assign: INT ID EQ ID '[' NUMBER ']' SC •
+
+    $default  reduce using rule 3 (assign)
+
+
+State 34
+
+    4 loop: FOR ID EQ NUMBER TO ID • '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    '-'  shift, and go to state 35
+
+
+State 35
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' • NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    NUMBER  shift, and go to state 36
+
+
+State 36
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER • DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    DO  shift, and go to state 37
+
+
+State 37
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO • NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    NL  shift, and go to state 38
+
+
+State 38
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL • IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    IF  shift, and go to state 39
+
+
+State 39
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF • ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    ID  shift, and go to state 40
+
+
+State 40
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID • '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    '['  shift, and go to state 41
+
+
+State 41
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' • ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    ID  shift, and go to state 42
+
+
+State 42
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID • ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    ']'  shift, and go to state 43
+
+
+State 43
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' • RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    RELOP  shift, and go to state 44
+
+
+State 44
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP • ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    ID  shift, and go to state 45
+
+
+State 45
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID • NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    NL  shift, and go to state 46
+
+
+State 46
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL • ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    ID  shift, and go to state 47
+
+
+State 47
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID • EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    EQ  shift, and go to state 48
+
+
+State 48
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ • ID '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    ID  shift, and go to state 49
+
+
+State 49
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID • '[' ID ']' SC NL ENDIF NL ENDFOR
+
+    '['  shift, and go to state 50
+
+
+State 50
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' • ID ']' SC NL ENDIF NL ENDFOR
+
+    ID  shift, and go to state 51
+
+
+State 51
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID • ']' SC NL ENDIF NL ENDFOR
+
+    ']'  shift, and go to state 52
+
+
+State 52
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' • SC NL ENDIF NL ENDFOR
+
+    SC  shift, and go to state 53
+
+
+State 53
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC • NL ENDIF NL ENDFOR
+
+    NL  shift, and go to state 54
+
+
+State 54
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL • ENDIF NL ENDFOR
+
+    ENDIF  shift, and go to state 55
+
+
+State 55
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF • NL ENDFOR
+
+    NL  shift, and go to state 56
+
+
+State 56
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL • ENDFOR
+
+    ENDFOR  shift, and go to state 57
+
+
+State 57
+
+    4 loop: FOR ID EQ NUMBER TO ID '-' NUMBER DO NL IF ID '[' ID ']' RELOP ID NL ID EQ ID '[' ID ']' SC NL ENDIF NL ENDFOR •
+
+    $default  reduce using rule 4 (loop)
